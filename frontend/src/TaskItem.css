@@ -1,0 +1,16 @@
+.task-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+    margin-bottom: 10px;
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .description {
+    font-size: 14px;
+  }
+  
