@@ -63,8 +63,9 @@ const TaskColumnAddTask: React.FC = () => {
             backgroundColor: "rgba(120, 111, 214, 0.5)", 
             color: "#fff", 
             fontFamily: "Poppins, sans-serif",
-            fontWeight: 300, 
-            fontSize: 12,
+            fontWeight: 300,
+              textTransform: 'none',
+              fontStyle: 'normal',
             '&:hover': {
               backgroundColor: "rgba(120, 111, 214, 0.7)", 
             }

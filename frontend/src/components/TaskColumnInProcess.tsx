@@ -1,3 +1,4 @@
+import { PendingOutlined } from "@mui/icons-material";
 import { Box, Divider, List, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { getTasksInProcess } from "../api";
@@ -32,7 +33,7 @@ const TaskColumnInProcess: React.FC = () => {
       height: "100%",
       minHeight: "600px",
       maxHeight: "600px", 
-      overflowY: "auto", 
+      overflowY: "hidden", 
       minWidth: "300px",
       margin: "10px",
       backgroundColor: "rgba(20, 20, 37, 1.0)",
@@ -40,10 +41,12 @@ const TaskColumnInProcess: React.FC = () => {
       backdropFilter: "blur(10px) brightness(80%)", 
       WebkitBackdropFilter: "blur(10px) brightness(80%)",
 
-      
+      '&:hover': {
+        overflowY: "auto",
+      },
   '&::-webkit-scrollbar': {
     width: '8px', 
-    backgroundColor: 'rgba(255, 255, 255, 0.2)', 
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
   },
   '&::-webkit-scrollbar-thumb': {
     backgroundColor: '#6c63ff', 
@@ -54,8 +57,14 @@ const TaskColumnInProcess: React.FC = () => {
   },
     }}
     >
-      <Typography variant="h4">In Process</Typography>
-      <Divider variant="middle" sx={{ borderColor: 'transparent', margin: '20px 0' }} />
+      <Divider variant="middle" sx={{ borderColor: 'transparent', margin: '8px 0' }} />
+      <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: 7 }}>
+        <PendingOutlined /> 
+        <Typography variant="h4" sx={{ fontFamily: 'Poppins', fontSize: 30, fontWeight: 'bold', marginLeft: '8px' }}>
+          In Process
+        </Typography>
+      </Box>
+      <Divider variant="middle" sx={{ borderColor: 'transparent', margin: '8px 0' }} />
       <List>
         {tasks.map((task) => (
           <TaskItem

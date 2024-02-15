@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { Box, Button, FormControl, MenuItem, Select, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { deleteTask, updateTask } from '../api';
 import { Task } from '../types';
@@ -88,7 +88,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onUpdate }) => {
             fullWidth
           />
           <FormControl fullWidth margin="normal">
-            <InputLabel id="task-status-label">Status da Tarefa</InputLabel>
+            {/* <InputLabel id="task-status-label">Status da Tarefa</InputLabel> */}
             <Select
               labelId="task-status-label"
               id="task-status"
@@ -103,27 +103,35 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onUpdate }) => {
             </Select>
           </FormControl>
           <Button variant="contained"
-              sx={{
-                backgroundColor: "rgba(120, 111, 214, 0.5)", 
-                color: "#fff", 
-                '&:hover': {
-                  backgroundColor: "rgba(120, 111, 214, 0.7)", 
-                }
-              }} 
+            sx={{
+              borderRadius: "8px",
+              width: "170px", 
+              backgroundColor: "rgba(120, 111, 214, 0.5)", 
+              color: "#fff", 
+              fontFamily: "Poppins, sans-serif",
+              fontWeight: 300,
+                textTransform: 'none',
+                fontStyle: 'normal',
+              '&:hover': {
+                backgroundColor: "rgba(120, 111, 214, 0.7)", 
+              }
+            }}
               onClick={ handleEditSave } >
             Salvar
           </Button>
         </Box>
       ) : (
         <Box>
-          <Box fontWeight="bold" marginBottom="10px">
-            {task.title}
-          </Box>
-          <Box marginBottom="10px">{task.description}</Box>
+          <Box sx={{ fontFamily: 'Poppins', fontSize: 20, fontWeight: 500 }}> {task.title} </Box>
+          <Box sx={{ fontFamily: 'Poppins', fontSize: 16, fontWeight: 200, fontStyle: 'normal', marginTop: 4, marginBottom: 8 }} >{task.description}</Box>
           <Button
             variant="contained"
             sx={{
               backgroundColor: "rgba(0.796, 0.404, 0.541, 0.5)", 
+              fontFamily: 'Poppins',
+              fontWeight: 300,
+              textTransform: 'none',
+              fontStyle: 'normal',
               color: "#fff", 
               '&:hover': {
                 backgroundColor: "rgba(0.796, 0.404, 0.541, 0.7)", 
@@ -138,6 +146,10 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onUpdate }) => {
               sx={{
               backgroundColor: "rgba(120, 111, 214, 0.5)", 
               color: "#fff", 
+              fontFamily: 'Poppins',
+              fontWeight: 300,
+              textTransform: 'none',
+              fontStyle: 'normal',
               '&:hover': {
                 backgroundColor: "rgba(120, 111, 214, 0.7)", 
               }

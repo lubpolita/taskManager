@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import React from 'react';
 import TaskColumnAddTask from './components/TaskColumnAddTask';
 import TaskColumnBacklog from './components/TaskColumnBacklog';
@@ -10,7 +11,27 @@ const App: React.FC = () => {
     <div className="App">
       <header>
 
-        {/* <h1>Tasks</h1> */}
+        {/* <h1 style={ 
+          {
+            fontFamily: 'Poppins',
+            fontSize: 30,
+            fontWeight: 'bold',
+            marginLeft: '8px',
+            textShadow: '0 0 10px rgba(255, 255, 255, 0.3)', 
+            color: 'rgba(255, 255, 255, 0.9)', 
+          }
+        } >Tasks</h1> */}
+
+        <Typography variant="h1"
+          sx={{ 
+            fontFamily: '"Orbitron", "sans-serif"',
+            fontSize: 50,
+            fontWeight: 'bold',
+            marginLeft: '8px',
+            marginBottom: '6vh',
+            textShadow: '0 0 10px rgba(255, 255, 255, 0.15)', // Adiciona um sombreamento sutil
+            color: 'rgba(255, 255, 255, 0.1)', // Define uma cor quase transparente
+    }}>Task Manager</Typography>
       </header>
       <main className="columns-container">
         <TaskColumnBacklog />

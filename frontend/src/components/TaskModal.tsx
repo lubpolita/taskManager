@@ -29,9 +29,21 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, handleClose, handleSave, 
                 borderRadius: '8px',
                 boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)'
             }}>
-            <DialogTitle>{initialTitle ? 'Editar Tarefa' : 'Adicionar Nova Tarefa'}</DialogTitle>
+            <DialogTitle
+            sx={{
+                fontFamily: "Poppins, sans-serif",
+                fontWeight: 500,
+                  textTransform: 'none',
+                  fontStyle: 'normal',
+              }}>{'Adicionar Nova Tarefa'}</DialogTitle>
             <DialogContent>
-                <DialogContentText>
+                <DialogContentText
+                 sx={{
+                    fontFamily: "Poppins, sans-serif",
+                    fontWeight: 300,
+                      textTransform: 'none',
+                      fontStyle: 'normal',
+                  }}>
                     Insira o título, a descrição e o status da tarefa.
                 </DialogContentText>
                 <TextField
@@ -55,17 +67,20 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, handleClose, handleSave, 
                     fullWidth
                     multiline 
                     rows={10} 
-                    variant="standard"
+                    variant="filled"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />
                 <Select
                     label="Status da Tarefa"
                     id="status"
+                     sx={{
+                        marginTop: 2,
+                      }}
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
                     fullWidth
-                    variant="standard"
+                    variant="outlined"
                 >
                     <MenuItem value="backlog">Backlog</MenuItem>
                     <MenuItem value="process">In Process</MenuItem>
@@ -76,19 +91,31 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, handleClose, handleSave, 
             <DialogActions>
                 <Button
                     sx={{
+                        borderRadius: "8px",
+                        width: "170px", 
                         backgroundColor: "rgba(120, 111, 214, 0.5)", 
                         color: "#fff", 
+                        fontFamily: "Poppins, sans-serif",
+                        fontWeight: 300,
+                          textTransform: 'none',
+                          fontStyle: 'normal',
                         '&:hover': {
-                          backgroundColor: "rgba(120, 111, 214, 0.7)", // Cor vermelha com 70% de opacidade ao passar o mouse
+                          backgroundColor: "rgba(120, 111, 214, 0.7)", 
                         }
-                    }}
+                      }}
                     onClick={handleClose}>Cancelar</Button>
                 <Button
                     sx={{
+                        borderRadius: "8px",
+                        width: "170px", 
                         backgroundColor: "rgba(120, 111, 214, 0.5)", 
                         color: "#fff", 
+                        fontFamily: "Poppins, sans-serif",
+                        fontWeight: 300,
+                        textTransform: 'none',
+                        fontStyle: 'normal',
                         '&:hover': {
-                          backgroundColor: "rgba(120, 111, 214, 0.7)", // Cor vermelha com 70% de opacidade ao passar o mouse
+                        backgroundColor: "rgba(120, 111, 214, 0.7)", 
                         }
                     }}
                     onClick={handleSaveClick}>Salvar</Button>
