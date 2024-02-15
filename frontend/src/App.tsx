@@ -9,7 +9,8 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header>
-        <h1>Tasks</h1>
+
+        {/* <h1>Tasks</h1> */}
       </header>
       <main className="columns-container">
         <TaskColumnBacklog />

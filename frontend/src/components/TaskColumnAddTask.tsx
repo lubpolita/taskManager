@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "../App.css";
 import { createTask, getTasks } from "../api";
 import { Task } from "../types";
-import TaskModal from "./TaskModal"; // Importe o componente TaskModal
+import TaskModal from "./TaskModal";
 
 const TaskColumnAddTask: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -40,7 +40,8 @@ const TaskColumnAddTask: React.FC = () => {
       .catch((error) => {
         console.error("Erro ao adicionar nova tarefa:", error);
       });
-
+    
+    fetchTasks();
     setIsOpen(false);
   };
 
@@ -56,18 +57,24 @@ const TaskColumnAddTask: React.FC = () => {
     <div className="add-task-container">
       <React.Fragment>
         <Button
-          style={{
-            borderRadius: 35,
-            backgroundColor: "#333333",
-            color: "#FFFFFF",
-            borderColor: "#FFFFFF",
+          sx={{
+            borderRadius: "8px",
+            width: "170px", 
+            backgroundColor: "rgba(120, 111, 214, 0.5)", 
+            color: "#fff", 
+            fontFamily: "Poppins, sans-serif",
+            fontWeight: 300, 
+            fontSize: 12,
+            '&:hover': {
+              backgroundColor: "rgba(120, 111, 214, 0.7)", 
+            }
           }}
           variant="outlined"
           onClick={handleAddClick}
         >
           Adicionar Tarefa
         </Button>
-        <TaskModal // Use o componente TaskModal aqui
+        <TaskModal 
           isOpen={isOpen}
           handleClose={handleClose}
           handleSave={handleAddTask}

@@ -7,15 +7,15 @@ import ConfirmDeleteModal from './ConfirmDeleteModal';
 interface TaskItemProps {
   task: Task;
   onDelete: (taskId: string) => void; 
+  onUpdate: () => void; 
 }
 
-const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete }) => {
+const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [editedTaskTitle, setEditedTaskTitle] = useState(task.title);
   const [editedTaskDescription, setEditedTaskDescription] = useState(task.description);
   const [selectedStatus, setSelectedStatus] = useState(task.status);
-
 
   const handleDeleteConfirm = () => {
     deleteTask(task.id)
@@ -42,7 +42,12 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete }) => {
       editedTaskTitle,
       editedTaskDescription,
       selectedStatus
-    );
+    ).then(() => {
+      onUpdate();
+    })
+    .catch((error) => {
+      console.error("Erro ao excluir tarefa:", error);
+    });
     setIsEditing(false);
   };
 
@@ -50,13 +55,20 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete }) => {
     <Box
       sx={{
         marginBottom: "10px",
-        padding: "10px",
-        border: "1px solid grey",
+        backgroundColor: "rgba(28, 28, 48, 1.0)", // Cor branca para o quadrado
+        padding: "20px",
         borderRadius: "5px",
+        textAlign: "center",
       }}
     >
       {isEditing ? (
-        <Box>
+        <Box sx={{
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          color: '#333',
+          padding: '20px',
+          borderRadius: '8px',
+          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)'
+        }}>
           <TextField
             name="title"
             value={editedTaskTitle}
@@ -84,13 +96,21 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete }) => {
               value={selectedStatus}
               onChange={e => setSelectedStatus(e.target.value)}
             >
-              <MenuItem value="Backlog">Backlog</MenuItem>
-              <MenuItem value="In Process">In Process</MenuItem>
-              <MenuItem value="Code Review">Code Review</MenuItem>
-              <MenuItem value="Finished">Finished</MenuItem>
+              <MenuItem value="backlog">Backlog</MenuItem>
+              <MenuItem value="process">In Process</MenuItem>
+              <MenuItem value="review">Code Review</MenuItem>
+              <MenuItem value="finished">Finished</MenuItem>
             </Select>
           </FormControl>
-          <Button variant="contained" color="primary" onClick={handleEditSave}>
+          <Button variant="contained"
+              sx={{
+                backgroundColor: "rgba(120, 111, 214, 0.5)", 
+                color: "#fff", 
+                '&:hover': {
+                  backgroundColor: "rgba(120, 111, 214, 0.7)", 
+                }
+              }} 
+              onClick={ handleEditSave } >
             Salvar
           </Button>
         </Box>
@@ -102,13 +122,26 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete }) => {
           <Box marginBottom="10px">{task.description}</Box>
           <Button
             variant="contained"
-            color="secondary"
+            sx={{
+              backgroundColor: "rgba(0.796, 0.404, 0.541, 0.5)", 
+              color: "#fff", 
+              '&:hover': {
+                backgroundColor: "rgba(0.796, 0.404, 0.541, 0.7)", 
+              }
+            }}
             onClick={handleDeleteClick}
             style={{ marginRight: "10px" }}
           >
             Excluir
           </Button>
-          <Button variant="contained" onClick={handleEditClick}>
+            <Button variant="contained"
+              sx={{
+              backgroundColor: "rgba(120, 111, 214, 0.5)", 
+              color: "#fff", 
+              '&:hover': {
+                backgroundColor: "rgba(120, 111, 214, 0.7)", 
+              }
+            }} onClick={handleEditClick}>
             Editar
           </Button>
         </Box>

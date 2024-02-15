@@ -31,6 +31,38 @@ export default class TaskRepository implements ITasksRepository {
     return task;
   }
 
+  public async findAllBacklog(): Promise<Task[] | undefined> {
+    const task = await this.ormRepository.find({
+      where: [{ status: 'backlog' }, { status: 'Backlog' }],
+    });
+
+    return task;
+  }
+
+  public async findAllInProcess(): Promise<Task[] | undefined> {
+    const task = await this.ormRepository.find({
+      where: [{ status: 'process' }, { status: 'Process' }],
+    });
+
+    return task;
+  }
+
+  public async findAllReview(): Promise<Task[] | undefined> {
+    const task = await this.ormRepository.find({
+      where: [{ status: 'review' }, { status: 'Review' }],
+    });
+
+    return task;
+  }
+
+  public async findAllFinished(): Promise<Task[] | undefined> {
+    const task = await this.ormRepository.find({
+      where: [{ status: 'finished' }, { status: 'Finished' }],
+    });
+
+    return task;
+  }
+
   public async update(data: Task): Promise<Task> {
     const task = await this.ormRepository.save(data);
     return task;

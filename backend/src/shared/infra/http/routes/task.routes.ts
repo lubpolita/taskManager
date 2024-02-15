@@ -7,6 +7,10 @@ const taskRoutes = Router();
 taskRoutes.post('/', taskController.create);
 
 taskRoutes.get('/', taskController.findAll);
+taskRoutes.get('/backlog', taskController.findAllBacklog);
+taskRoutes.get('/in_process', taskController.findAllInProcess);
+taskRoutes.get('/review', taskController.findAllReview);
+taskRoutes.get('/finished', taskController.findAllFinished);
 
 taskRoutes.delete('/delete/:id', taskController.delete);
 

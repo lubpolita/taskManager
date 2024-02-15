@@ -6,22 +6,22 @@ const api = axios.create({
 });
 
 export const getTasks = async () => {
-  const response = await api.get<Task[]>('/task');
+  const response = await api.get<Task[]>('/task/backlog');
   return response.data;
 };
 
 export const getTasksInProcess = async () => {
-    const response = await api.get<Task[]>('/task');
+    const response = await api.get<Task[]>('/task/in_process');
     return response.data;
 };
   
 export const getTasksReview = async () => {
-    const response = await api.get<Task[]>('/task');
+    const response = await api.get<Task[]>('/task/review');
     return response.data;
 };
   
 export const getTasksFinished= async () => {
-    const response = await api.get<Task[]>('/task');
+    const response = await api.get<Task[]>('/task/finished');
     return response.data;
 };
   

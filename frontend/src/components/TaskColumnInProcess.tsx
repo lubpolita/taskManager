@@ -1,4 +1,4 @@
-import { Box, Divider, List, Typography, colors } from "@mui/material";
+import { Box, Divider, List, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { getTasksInProcess } from "../api";
 import { Task } from "../types";
@@ -20,24 +20,48 @@ const TaskColumnInProcess: React.FC = () => {
     fetchTasks();
   };
 
+  const handleTaskUpdate = () => {
+    fetchTasks();
+  };
+
   return (
     <Box
-      sx={{
-        border: "1px solid grey",
-        borderRadius: "5px",
-        padding: "10px",
-        height: "100%",
-        minWidth: "300px",
-        margin: "10px",
-      }}
+    sx={{
+      borderRadius: "15px", 
+      padding: "10px",
+      height: "100%",
+      minHeight: "600px",
+      maxHeight: "600px", 
+      overflowY: "auto", 
+      minWidth: "300px",
+      margin: "10px",
+      backgroundColor: "rgba(20, 20, 37, 1.0)",
+      boxShadow: "0px 8px 12px rgba(0, 0, 0, 0.2)", 
+      backdropFilter: "blur(10px) brightness(80%)", 
+      WebkitBackdropFilter: "blur(10px) brightness(80%)",
+
+      
+  '&::-webkit-scrollbar': {
+    width: '8px', 
+    backgroundColor: 'rgba(255, 255, 255, 0.2)', 
+  },
+  '&::-webkit-scrollbar-thumb': {
+    backgroundColor: '#6c63ff', 
+    borderRadius: '8px', 
+  },
+  '&::-webkit-scrollbar-thumb:hover': {
+    backgroundColor: '#4a45b2', 
+  },
+    }}
     >
       <Typography variant="h4">In Process</Typography>
-      <Divider variant="middle" sx={{ borderColor: colors.grey[500] }} />
+      <Divider variant="middle" sx={{ borderColor: 'transparent', margin: '20px 0' }} />
       <List>
         {tasks.map((task) => (
           <TaskItem
             key={task.id}
             task={task}
+            onUpdate={handleTaskUpdate}
             onDelete={handleTaskDelete}
           />
         ))}

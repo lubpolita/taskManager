@@ -21,7 +21,14 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, handleClose, handleSave, 
     };
 
     return (
-        <Dialog open={isOpen} onClose={handleClose}>
+        <Dialog open={isOpen} onClose={handleClose}
+            sx={{
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                color: '#333',
+                padding: '20px',
+                borderRadius: '8px',
+                boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)'
+            }}>
             <DialogTitle>{initialTitle ? 'Editar Tarefa' : 'Adicionar Nova Tarefa'}</DialogTitle>
             <DialogContent>
                 <DialogContentText>
@@ -60,15 +67,31 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, handleClose, handleSave, 
                     fullWidth
                     variant="standard"
                 >
-                    <MenuItem value="Backlog">Backlog</MenuItem>
-                    <MenuItem value="In Process">In Process</MenuItem>
-                    <MenuItem value="Code Review">Code Review</MenuItem>
-                    <MenuItem value="Finished">Finished</MenuItem>
+                    <MenuItem value="backlog">Backlog</MenuItem>
+                    <MenuItem value="process">In Process</MenuItem>
+                    <MenuItem value="review">Code Review</MenuItem>
+                    <MenuItem value="finished">Finished</MenuItem>
                 </Select>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose}>Cancelar</Button>
-                <Button onClick={handleSaveClick}>Salvar</Button>
+                <Button
+                    sx={{
+                        backgroundColor: "rgba(120, 111, 214, 0.5)", 
+                        color: "#fff", 
+                        '&:hover': {
+                          backgroundColor: "rgba(120, 111, 214, 0.7)", // Cor vermelha com 70% de opacidade ao passar o mouse
+                        }
+                    }}
+                    onClick={handleClose}>Cancelar</Button>
+                <Button
+                    sx={{
+                        backgroundColor: "rgba(120, 111, 214, 0.5)", 
+                        color: "#fff", 
+                        '&:hover': {
+                          backgroundColor: "rgba(120, 111, 214, 0.7)", // Cor vermelha com 70% de opacidade ao passar o mouse
+                        }
+                    }}
+                    onClick={handleSaveClick}>Salvar</Button>
             </DialogActions>
         </Dialog>
     );
