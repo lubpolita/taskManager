@@ -36,7 +36,12 @@ O protótipo mostra a tela principal com os botões que dão acesso às funciona
 
 ![Protótipo](figma.png)
 
+## 7. Como Rodar o Projeto? 
+
+Acesse as pastas "backend" e "frontend" respectivamente e siga as instruções dos arquivos README.md.
+
 ## Conclusão
 
 A proposta de desenvolvimento de uma aplicação web para organização de tarefas em um quadro Kanban apresenta-se como uma solução eficaz para otimizar o fluxo de trabalho de projetos. Com a utilização de tecnologias modernas espera-se oferecer uma ferramenta fácil e intuitiva para gerenciamento de tarefas.
+
 
