@@ -37,6 +37,8 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onUpdate }) => {
   };
 
   const handleEditSave = () => {
+    const realoadWindow = task.status;
+
     updateTask(
       task.id,
       editedTaskTitle,
@@ -46,9 +48,11 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onDelete, onUpdate }) => {
       onUpdate();
     })
     .catch((error) => {
-      console.error("Erro ao excluir tarefa:", error);
+      console.error("Erro ao editar tarefa:", error);
     });
     setIsEditing(false);
+
+    if (realoadWindow != selectedStatus) { window.location.reload(); }
   };
 
   return (

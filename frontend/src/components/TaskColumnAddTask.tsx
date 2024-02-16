@@ -1,22 +1,13 @@
 import Button from "@mui/material/Button";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../App.css";
-import { createTask, getTasks } from "../api";
+import { createTask } from "../api";
 import { Task } from "../types";
 import TaskModal from "./TaskModal";
 
 const TaskColumnAddTask: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    fetchTasks();
-  }, []);
-
-  const fetchTasks = async () => {
-    const tasksData = await getTasks();
-    setTasks(tasksData);
-  };
 
   const handleAddTask = (
     title: string,
@@ -40,9 +31,8 @@ const TaskColumnAddTask: React.FC = () => {
       .catch((error) => {
         console.error("Erro ao adicionar nova tarefa:", error);
       });
-    
-    fetchTasks();
     setIsOpen(false);
+    window.location.reload();
   };
 
   function handleAddClick(): void {

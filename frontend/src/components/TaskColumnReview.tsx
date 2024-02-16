@@ -14,7 +14,6 @@ const TaskColumnReview: React.FC = () => {
 
   const fetchTasks = async () => {
     const tasksData = await getTasksReview();
-
     setTasks(tasksData);
   };
 

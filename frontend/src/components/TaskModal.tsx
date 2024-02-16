@@ -23,7 +23,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, handleClose, handleSave, 
     return (
         <Dialog open={isOpen} onClose={handleClose}
             sx={{
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                backgroundColor: 'rgba(20, 20, 37, 0.5)',
                 color: '#333',
                 padding: '20px',
                 borderRadius: '8px',
@@ -33,8 +33,8 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, handleClose, handleSave, 
             sx={{
                 fontFamily: "Poppins, sans-serif",
                 fontWeight: 500,
-                  textTransform: 'none',
-                  fontStyle: 'normal',
+                textTransform: 'none',
+                fontStyle: 'normal',
               }}>{'Adicionar Nova Tarefa'}</DialogTitle>
             <DialogContent>
                 <DialogContentText
@@ -42,7 +42,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, handleClose, handleSave, 
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 300,
                       textTransform: 'none',
-                      fontStyle: 'normal',
+                        fontStyle: 'normal',
                   }}>
                     Insira o título, a descrição e o status da tarefa.
                 </DialogContentText>
